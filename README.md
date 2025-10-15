@@ -223,4 +223,62 @@ plt.show()
 ## **Señal respiratoria y de sudoracion **
 <img width="630" height="336" alt="download" src="https://github.com/user-attachments/assets/0e1efaf5-4879-4219-8fd5-5fa84c342fdc" />
 
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import butter, filtfilt
+
+# ==========================================================
+#        FILTRO PASA BANDA BUTTERWORTH - FUNCIÓN GENERAL
+# ==========================================================
+def butter_bandpass(lowcut: float, highcut: float, fs: float, order: int = 4):
+ 
+    nyquist = 0.5 * fs
+    low = lowcut / nyquist
+    high = highcut / nyquist
+    b, a = butter(order, [low, high], btype='band')
+    return b, a
+
+
+def aplicar_filtro(data: np.ndarray, lowcut: float, highcut: float, fs: float, order: int = 4):
+  
+    b, a = butter_bandpass(lowcut, highcut, fs, order)
+    filtered_signal = filtfilt(b, a, data)
+    return filtered_signal
+
+
+# ==========================================================
+#        DEMOSTRACIÓN DE USO (EJEMPLO DE APLICACIÓN)
+# ==========================================================
+if __name__ == "__main__":
+    # Parámetros de simulación
+    fs = 1000  # Frecuencia de muestreo (Hz)
+    duration = 5  # Duración de la señal (segundos)
+    t = np.linspace(0, duration, fs * duration)
+
+    # Señal con varias frecuencias + ruido
+    signal_original = np.sin(2 * np.pi * 5 * t) + 0.5 * np.sin(2 * np.pi * 60 * t)
+    ruido = 0.2 * np.random.randn(len(t))
+    signal_ruidosa = signal_original + ruido
+
+    # Aplicación del filtro pasa banda (1–40 Hz)
+    signal_filtrada = aplicar_filtro(signal_ruidosa, lowcut=1, highcut=40, fs=fs, order=4)
+
+    # ==========================================================
+    #        VISUALIZACIÓN DE RESULTADOS
+    # ==========================================================
+    plt.figure(figsize=(10, 5))
+    plt.plot(t, signal_ruidosa, label="Señal con ruido", alpha=0.6)
+    plt.plot(t, signal_filtrada, label="Señal filtrada (1–40 Hz)", color='r')
+    plt.title("Filtro Pasa Banda Butterworth Aplicado a Señal Ruidosa")
+    plt.xlabel("Tiempo [s]")
+    plt.ylabel("Amplitud")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+```
+## **Filltro pasa banda **
+<img width="989" height="490" alt="download" src="https://github.com/user-attachments/assets/da3e3c49-99b0-450b-bae3-2f6875d675ec" />
 
