@@ -220,7 +220,7 @@ plt.xlabel("Tiempo (s)")
 plt.tight_layout()
 plt.show()
 ```
-## **Señal respiratoria y de sudoracion **
+## **Señal respiratoria y de sudoracion**
 <img width="630" height="336" alt="download" src="https://github.com/user-attachments/assets/0e1efaf5-4879-4219-8fd5-5fa84c342fdc" />
 
 ```
@@ -279,6 +279,6 @@ if __name__ == "__main__":
     plt.show()
 
 ```
-## **Filltro pasa banda **
+## **Filltro pasa banda**
 <img width="989" height="490" alt="download" src="https://github.com/user-attachments/assets/da3e3c49-99b0-450b-bae3-2f6875d675ec" />
 
