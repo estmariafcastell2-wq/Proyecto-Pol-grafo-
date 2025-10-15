@@ -1,4 +1,4 @@
-# Proyecto-Protecto 
+# Proyecto- Poligrafo 
 
 ```
 import numpy as np
