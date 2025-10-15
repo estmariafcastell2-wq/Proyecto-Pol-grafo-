@@ -279,6 +279,6 @@ if __name__ == "__main__":
     plt.show()
 
 ```
-## **Filltro pasa banda**
+## **Filtro pasa banda**
 <img width="989" height="490" alt="download" src="https://github.com/user-attachments/assets/da3e3c49-99b0-450b-bae3-2f6875d675ec" />
 
